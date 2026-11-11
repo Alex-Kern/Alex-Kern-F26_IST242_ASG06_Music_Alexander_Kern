@@ -23,3 +23,5 @@ Podcast differs from Song in two ways:
             (Joe Rogan, Comedy) The Joe Rogan Experience active = True,
              debut year: 2009, duration: 02:30:00 is explicit: True
 """
+class Podcast:
+    pass
