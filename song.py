@@ -19,3 +19,5 @@ responsibility is to:
             (Kendrick Lamar, Hip-Hop) DAMN. active = True,  debut year: 2017,
             duration: 03:40
 """
+class Song:
+    pass
