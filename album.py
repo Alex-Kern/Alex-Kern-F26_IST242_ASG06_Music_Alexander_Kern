@@ -28,5 +28,30 @@ class Album:
 
         self._title = title
         self._active = active
-        # Defensive copy prevents external mutation of the caller's list
+        # Defensive copy on input
         self._years = list(years)
+
+    @property
+    def title(self) -> str:
+        """str: The title of the album or series."""
+        return self._title
+
+    @property
+    def active(self) -> bool:
+        """bool: Whether the album or series is currently active."""
+        return self._active
+
+    @property
+    def years(self) -> list[int]:
+        """list[int]: A copy of the years released."""
+        # Defensive copy on output
+        return list(self._years)
+
+    @property
+    def debut_year(self) -> int:
+        """int: The initial debut release year."""
+        return self._years[0]
+
+    def __str__(self) -> str:
+        """Return formatted string: '<title> active = <active>, debut year: <first-year>'."""
+        return f"{self._title} active = {self._active}, debut year: {self.debut_year}"
