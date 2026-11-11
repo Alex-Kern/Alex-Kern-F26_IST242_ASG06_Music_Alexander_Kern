@@ -11,3 +11,5 @@ Design notes:
   • __str__ uses a generator expression with str.join() for a concise
     multi-line string without building an intermediate list manually.
 """
+class Playlist:
+    pass
