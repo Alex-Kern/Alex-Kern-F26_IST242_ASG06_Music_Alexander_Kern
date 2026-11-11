@@ -17,3 +17,5 @@ Design decisions to implement:
   • __hash__ is defined to stay consistent with __eq__ (Python sets __hash__ to
     None when you define __eq__, making objects unhashable unless you fix it).
 """
+class MusicTrack:
+    pass
