@@ -19,5 +19,30 @@ responsibility is to:
             (Kendrick Lamar, Hip-Hop) DAMN. active = True,  debut year: 2017,
             duration: 03:40
 """
-class Song:
-    pass
+from artist import Artist
+from album import Album
+from music_track import MusicTrack
+
+
+class Song(MusicTrack):
+    """Is a standard musical track with MM:SS duration formatting."""
+
+    def __init__(self, artist: Artist, album: Album, duration_seconds: float) -> None:
+        """Initialize a Song instance by delegating to MusicTrack.
+
+        Args:
+            artist: The Artist instance associated with the song.
+            album: The Album instance containing the song.
+            duration_seconds: The duration of the song in seconds.
+        """
+        super().__init__(artist, album, duration_seconds)
+
+    def play_time_formatted(self) -> str:
+        """Return the track duration formatted as 'MM:SS'."""
+        total_seconds = int(self.duration_seconds)
+        minutes, seconds = divmod(total_seconds, 60)
+        return f"{minutes:02d}:{seconds:02d}"
+
+    def __str__(self) -> str:
+        """Return formatted string: '(<artist>) <album>, duration: <MM:SS>'."""
+        return f"({self.artist}) {self.album}, duration: {self.play_time_formatted()}"
