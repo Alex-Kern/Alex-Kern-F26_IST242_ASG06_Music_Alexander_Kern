@@ -18,10 +18,12 @@ Design decisions to implement:
     None when you define __eq__, making objects unhashable unless you fix it).
 """
 from abc import ABC, abstractmethod
+from functools import total_ordering
 from artist import Artist
 from album import Album
 
 
+@total_ordering
 class MusicTrack(ABC):
     """Abstract base class representing a generic music or audio track."""
 
@@ -72,3 +74,19 @@ class MusicTrack(ABC):
             Total play duration in seconds.
         """
         return self._duration_seconds * num_plays
+
+    def __eq__(self, other: object) -> bool:
+        """Return True if other is a MusicTrack with the same release_year."""
+        if not isinstance(other, MusicTrack):
+            return NotImplemented
+        return self.release_year == other.release_year
+
+    def __lt__(self, other: object) -> bool:
+        """Return True if this track's release_year is less than other's."""
+        if not isinstance(other, MusicTrack):
+            return NotImplemented
+        return self.release_year < other.release_year
+
+    def __hash__(self) -> int:
+        """Return hash consistent with __eq__ based on release_year."""
+        return hash(self.release_year)
