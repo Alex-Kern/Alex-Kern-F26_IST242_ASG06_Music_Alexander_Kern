@@ -51,3 +51,24 @@ class MusicTrack(ABC):
     def duration_seconds(self) -> float:
         """float: Track duration in seconds."""
         return self._duration_seconds
+
+    @property
+    def release_year(self) -> int:
+        """int: The release year derived from the album's debut year."""
+        return self._album.debut_year
+
+    @abstractmethod
+    def play_time_formatted(self) -> str:
+        """Return a human-readable string representation of the track's duration."""
+        pass
+
+    def total_play_time(self, num_plays: int) -> float:
+        """Calculate total duration in seconds over a given number of plays.
+
+        Args:
+            num_plays: The number of times the track is played.
+
+        Returns:
+            Total play duration in seconds.
+        """
+        return self._duration_seconds * num_plays
