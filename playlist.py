@@ -37,3 +37,11 @@ class Playlist:
     def clear_playlist(self) -> None:
         """Remove all tracks from the playlist in place."""
         self._tracks.clear()
+
+    def sort_by_release_year(self) -> None:
+        """Sort tracks in place by ascending release year."""
+        self._tracks.sort()
+
+    def __str__(self) -> str:
+        """Return each track on its own line, or empty string if empty."""
+        return "\n".join(str(track) for track in self._tracks)
